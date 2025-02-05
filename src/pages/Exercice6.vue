@@ -25,7 +25,8 @@
         </v-card-subtitle>
 
         <v-list>
-          <v-list-item>
+          <v-list-item v-for="(t, index) in tasks"
+            :key="index">
             <template v-slot:prepend>
               <v-list-item-action start>
                 <v-checkbox-btn />
@@ -33,11 +34,11 @@
             </template>
 
             <v-list-item-title>
-              *** Titre de la tâche ***
+              {{ t.title }}
             </v-list-item-title>
 
             <v-list-item-subtitle>
-              Créé le *** Date ***
+              Créé le {{ t.date }}
               à *** Heure ***
             </v-list-item-subtitle>
           </v-list-item>
