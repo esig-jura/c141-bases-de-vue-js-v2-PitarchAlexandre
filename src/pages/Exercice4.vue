@@ -10,24 +10,26 @@
 
         <v-card-subtitle>
           Caractères restants :
-          <strong>*** CARACTÈRES RESTANTS ***</strong>
+          <strong>{{ userInput.length }}</strong>
         </v-card-subtitle>
 
         <v-card-text>
-          <v-alert type="error" class="mb-2">
+          <v-alert v-show="caractRestant  < 0" type="error" class="mb-2">
             Vous avez atteint la limite maximale de caractères !
           </v-alert>
 
           <v-text-field
+            v-model="userInput"
             outlined
             rows="2"
             label="Tapez votre texte ici"
             :counter="MAX_LENGTH"
+            ref="chmpText"
           />
         </v-card-text>
 
         <v-card-actions>
-          <v-btn color="primary">
+          <v-btn color="primary" @click="chmpText.focus()">
             Activer le champ de texte
           </v-btn>
         </v-card-actions>
@@ -39,12 +41,16 @@
 <script setup>
 // Importation du composant contenant la donnée de l'exercice
 import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
-// Importation de la fonction réactive ref
-import { ref } from 'vue';
+import { ref, computed} from 'vue'
 
 // Constante pour la limite de caractères
 const MAX_LENGTH = 20;
 // Variable réactive pour le texte saisi
-const userInput = ref('');
+const userInput = ref('')
+const chmpText = ref('')
+
+const caractRestant = computed(() => {
+  return MAX_LENGTH - userInput.value.length
+})
 
 </script>
