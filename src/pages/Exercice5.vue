@@ -48,12 +48,16 @@ const containsPokemon = ref(false);
 watch(userInput, () => {
   const inputCleaned = userInput.value.toLowerCase();
 
-  if (inputCleaned.includes('pokémon')) {
-    return containsPokemon.value = true;
-  }
   if (userInput.value.length > MAX_LENGTH) {
     return userInput.value = '';
   }
+  if (inputCleaned.includes('pokémon')) {
+    return containsPokemon.value = true;
+  }
+  else {
+    return containsPokemon.value = false;
+  }
+
 
 })
 </script>
