@@ -57,7 +57,5 @@ watch(userInput, () => {
   else {
     return containsPokemon.value = false;
   }
-
-
 })
 </script>
