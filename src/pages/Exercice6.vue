@@ -55,7 +55,7 @@
 // Importation du composant ExerciceObjectifs
 import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 // Importation de la fonction réactive ref
-import {computed, toRaw, ref} from 'vue';
+import {computed, watch, ref} from 'vue';
 
 // Tableau réactif de tâches
 const tasks = ref([
@@ -103,6 +103,14 @@ function addTask () {
   // Réinitialisation de la saisie
   newTask.value = "";
 }
+//
+watch(newTask, (newVal, oldVal) => {
+  console.log('new : ', newVal , 'old : ', oldVal);
+  if (newVal.toLowerCase() === 'delete') {
+    tasks.value = [];
+    newTask.value = "";
+  }
+})
 
 </script>
 
