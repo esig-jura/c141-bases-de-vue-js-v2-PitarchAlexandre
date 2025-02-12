@@ -15,7 +15,6 @@
         <v-card-text>
           <p>Je suis là !</p>
         </v-card-text>
-
       </v-card>
 
     </div>
