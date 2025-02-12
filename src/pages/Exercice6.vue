@@ -82,7 +82,8 @@ const newTask = ref("");
 const sortTasks = computed(function() {
   // [...] -> créer un nouveau tableau composé, du tableau mis en paramètre
   // Dans ce cas, le tableau tasks
-  return [...tasks].value.sort((a, b) => b.date - a.date);
+  // return [...tasks.value].sort((a, b) => b.date - a.date);
+  return structuredClone(tasks.value).sort((a, b) => b.date - a.date);
 });
 
 /**
