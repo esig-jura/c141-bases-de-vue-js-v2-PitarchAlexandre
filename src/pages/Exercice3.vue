@@ -1,7 +1,7 @@
 <template>
   <v-container max-width="700">
     <!-- Donnée de l'exercice -->
-    <exercice-objectifs number="3" />
+    <exercice3-donnee />
     <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
@@ -10,22 +10,23 @@
         max-width="300"
       >
         <v-card-title>Liste de Pokémons</v-card-title>
-
-        <v-card-subtitle class="text-center">
+        <v-card-subtitle v-show="pokemons.length === 0" class="text-center">
           La liste est vide.
         </v-card-subtitle>
 
         <v-list>
           <v-list-item>
-            <v-list-item-title>
-              *** POKEMON ***
+            <v-list-item-title v-for="(pokemon, index) in pokemons"
+                               :key="index">
+              {{ index + 1 }}. {{ pokemon }}               <v-btn
+              @click="removePokemon(index)"
+              icon="mdi-delete"
+              variant="text"
+            ></v-btn>
             </v-list-item-title>
 
             <template v-slot:append>
-              <v-btn
-                icon="mdi-delete"
-                variant="text"
-              ></v-btn>
+
             </template>
           </v-list-item>
         </v-list>
@@ -36,7 +37,7 @@
 
 <script setup>
 // Importation du composant contenant la donnée de l'exercice
-import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
+import Exercice3Donnee from "@/components/donnees/Exercice3Donnee.vue";
 // Importation de la fonction réactive ref
 import {ref} from 'vue';
 
@@ -58,3 +59,7 @@ function removePokemon(index) {
 }
 </script>
 
+<style scoped lang="sass">
+ul
+  list-style: none
+</style>
