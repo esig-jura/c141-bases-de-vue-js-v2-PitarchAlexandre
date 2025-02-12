@@ -108,7 +108,7 @@ watch(newTask, (newVal, oldVal) => {
   console.log('new : ', newVal , 'old : ', oldVal);
   if (newVal.toLowerCase() === 'delete') {
     tasks.value = [];
-    newTask.value = "";
+  newTask.value = "";
   }
 })
 
