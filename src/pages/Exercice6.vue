@@ -55,7 +55,7 @@
 // Importation du composant ExerciceObjectifs
 import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 // Importation de la fonction réactive ref
-import {computed, ref} from 'vue';
+import {computed, toRaw, ref} from 'vue';
 
 // Tableau réactif de tâches
 const tasks = ref([
@@ -82,8 +82,12 @@ const newTask = ref("");
 const sortTasks = computed(function() {
   // [...] -> créer un nouveau tableau composé, du tableau mis en paramètre
   // Dans ce cas, le tableau tasks
-  // return [...tasks.value].sort((a, b) => b.date - a.date);
-  return structuredClone(tasks.value).sort((a, b) => b.date - a.date);
+  return [...tasks.value].sort((a, b) => b.date - a.date);
+  // La méthode structuredClone permet de créer une **copie profonde** du tableau `tasks.value`
+  // sans affecter l'original. Ensuite, on trie ce nouveau tableau par date décroissante (du plus récent au plus ancien).
+  // Mais bon... Ca marche pas là mdr
+  // return structuredClone(toRaw.tasks.value).sort((a, b) => b.date - a.date);
+
 });
 
 /**
