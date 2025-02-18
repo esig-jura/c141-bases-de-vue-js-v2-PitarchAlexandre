@@ -34,6 +34,7 @@
 <script setup>
 import { ref } from 'vue';
 import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
+import PokemonCard  from "@/components/PokemonCard.vue";
 
 // Liste initiale des Pokémon
 const pokemons = ref(["Pikachu", "Bulbizarre", "Salamèche", "Carapuce", "Rondoudou"]);
